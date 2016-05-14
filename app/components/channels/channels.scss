@@ -1,0 +1,24 @@
+.channels {
+  &__title {
+    margin: 0;
+  }
+  &__info {
+    margin: 0 0 20px 0;
+  }
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  &__item {
+    margin: 0;
+    padding: 10px 8px;
+    border-top: 2px solid $bg-color;
+    &:first-child {
+      border-top: 0;
+    }
+  }
+  &__link {
+    color: $link-color;
+  }
+}

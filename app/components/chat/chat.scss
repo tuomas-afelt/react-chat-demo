@@ -1,0 +1,59 @@
+.chat {
+  &__previous {
+    display: inline-block;
+    margin-bottom: 15px;
+    color: $link-color;
+  }
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  &__item {
+    margin-bottom: 20px;
+  }
+  &__user,
+  &__info {
+    display: block;
+    margin-bottom: 3px;
+    font-weight: 700;
+  }
+  &__user {
+    &--right {
+      text-align: right;
+    }
+  }
+  &__bubble {
+    display: block;
+    width: 100%;
+    padding: 10px 8px;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  &__bubble,
+  &__update,
+  &__new-message {
+    margin-bottom: 10px;
+  }
+  &__edit,
+  &__cancel,
+  &__delete {
+    width: auto;
+    height: 32px;
+    padding: 0 16px;
+    line-height: 32px;
+  }
+  &__edit {
+    margin-right: 5px;
+  }
+  &__form {
+    border-top: 2px solid $bg-color;
+    margin-bottom: 15px;
+    padding-top: 20px;
+  }
+  &__not-found {
+    display: block;
+    margin-bottom: 20px;
+  }
+}
