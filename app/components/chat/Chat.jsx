@@ -29,37 +29,6 @@ class Chat extends React.Component {
     this.setState(state);
   }
 
-  render() {
-    const credentials = this.state.user;
-    const channel = this.state.channels.filter(channel => channel.id === this.props.params.channelId);
-    const messages = channel[0].messages;
-
-    if (!credentials.username) {
-      this.context.router.push('/');
-      return null;
-    }
-
-    return (
-      <div className="chat">
-        <Link className="chat__previous" to="/channels">Back to channels</Link>
-        <Messages
-          credentials={credentials}
-          messages={messages}
-          onEdit={this.editMessage}
-          onDelete={this.deleteMessage} />
-        <form className="chat__form" ref="chat__form">
-          <input
-            type="text"
-            className="chat__new-message"
-            autoFocus={true}
-            placeholder="Say something..."
-            onKeyPress={this.handleChangeMessage} />
-          <button className="chat__create" onClick={this.handleSubmitMessage}>New message</button>
-        </form>
-      </div>
-    );
-  }
-
   handleChangeMessage(e) {
     this.setState({
       message: e.target.value
@@ -126,6 +95,37 @@ class Chat extends React.Component {
         id: id
       }
     });
+  }
+
+  render() {
+    const credentials = this.state.user;
+    const channel = this.state.channels.filter(channel => channel.id === this.props.params.channelId);
+    const messages = channel[0].messages;
+    
+    if (!credentials.username) {
+      this.context.router.push('/');
+      return null;
+    }
+
+    return (
+      <div className="chat">
+        <Link className="chat__previous" to="/channels">Back to channels</Link>
+        <Messages
+          credentials={credentials}
+          messages={messages}
+          onEdit={this.editMessage}
+          onDelete={this.deleteMessage} />
+        <form className="chat__form" ref="chat__form">
+          <input
+            type="text"
+            className="chat__new-message"
+            autoFocus={true}
+            placeholder="Say something..."
+            onKeyPress={this.handleChangeMessage} />
+          <button className="chat__create" onClick={this.handleSubmitMessage}>New message</button>
+        </form>
+      </div>
+    );
   }
 
 }

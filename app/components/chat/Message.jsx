@@ -9,14 +9,44 @@ class Message extends React.Component {
       editing: false
     };
 
-    this.renderEditInput = this.renderEditInput.bind(this);
-    this.renderEditButton = this.renderEditButton.bind(this);
-    this.renderDeleteButton = this.renderDeleteButton.bind(this);
-    this.renderMessage = this.renderMessage.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
     this.finishEdit = this.finishEdit.bind(this);
+    this.renderEditInput = this.renderEditInput.bind(this);
+    this.renderEditButton = this.renderEditButton.bind(this);
+    this.renderDeleteButton = this.renderDeleteButton.bind(this);
+    this.renderMessage = this.renderMessage.bind(this);
+  }
+
+  handleEdit() {
+    this.setState({
+      editing: true
+    });
+  }
+
+  handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      this.finishEdit(e);
+    }
+  }
+
+  handleCancel() {
+    this.setState({
+      editing: false
+    });
+  }
+
+  finishEdit(e) {
+    const value = e.target.value || this.refs.chat__update.value;
+
+    if (this.props.onEdit) {
+      this.props.onEdit(value);
+
+      this.setState({
+        editing: false
+      });
+    }
   }
 
   render() {
@@ -80,36 +110,6 @@ class Message extends React.Component {
         </div>
       </div>
     );
-  }
-
-  handleEdit() {
-    this.setState({
-      editing: true
-    });
-  }
-
-  handleKeyPress(e) {
-    if (e.key === 'Enter') {
-      this.finishEdit(e);
-    }
-  }
-
-  handleCancel() {
-    this.setState({
-      editing: false
-    });
-  }
-
-  finishEdit(e) {
-    const value = e.target.value || this.refs.chat__update.value;
-
-    if (this.props.onEdit) {
-      this.props.onEdit(value);
-
-      this.setState({
-        editing: false
-      });
-    }
   }
 }
 

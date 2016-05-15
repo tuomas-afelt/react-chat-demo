@@ -29,24 +29,6 @@ class Login extends React.Component {
     this.setState(state);
   }
 
-  render() {
-    return (
-      <div className="login">
-        <h1 className="login__title">ChatApp</h1>
-        <p className="login__info">Sign in to continue to ChatApp.</p>
-        <form className="login__form" ref="login__form">
-          <input
-            type="text"
-            className="login__input"
-            autoFocus={true}
-            placeholder="Username"
-            onChange={this.handleChangeLogin} />
-          <button className="login__submit" onClick={this.handleSubmitLogin}>Login</button>
-        </form>
-      </div>
-    );
-  }
-
   handleChangeLogin(e) {
     this.setState({
       username: e.target.value
@@ -69,6 +51,24 @@ class Login extends React.Component {
     });
 
     this.context.router.push('/channels');
+  }
+
+  render() {
+    return (
+      <div className="login">
+        <h1 className="login__title">ChatApp</h1>
+        <p className="login__info">Sign in to continue to ChatApp.</p>
+        <form className="login__form" ref="login__form">
+          <input
+            type="text"
+            className="login__input"
+            autoFocus={true}
+            placeholder="Username"
+            onChange={this.handleChangeLogin} />
+          <button className="login__submit" onClick={this.handleSubmitLogin}>Login</button>
+        </form>
+      </div>
+    );
   }
 }
 
